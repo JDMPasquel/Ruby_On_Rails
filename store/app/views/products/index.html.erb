@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+  <h1>AVAILABLE PRODUCTS</h1>
+
+<div id="main-container">
+<%= link_to "Create product", products_new_path%>
+  <table>
+    <tr>
+      <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </thead>
+    </tr>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td>
+          <%= link_to "Update", edit_product_path(product)%>
+          <%= link_to "Delete", product,
+           method: :delete, data: { confirm: "You are sure to remove?"} %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
+</body>
+</html>
